@@ -7,6 +7,8 @@ class Sql extends PDO {
     public function  __construct (){
 
         $this->conn = new PDO ("sqlsrv:Database=dbphp7;server=localhost\SQLEXPRESS;ConnectionPooling=0", "sa", "root");
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
     }
 

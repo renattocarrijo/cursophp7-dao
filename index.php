@@ -107,6 +107,8 @@ echo "<strong>E X E M P L O 02: Todos os usuários da tb_usuarios!</strong><hr>"
 
 $usuarios = $sql->select("SELECT * FROM tb_usuarios");
 
+//var_dump($usuarios);
+
 foreach ($usuarios as $key) {
     echo 
     
@@ -118,22 +120,26 @@ foreach ($usuarios as $key) {
 
 echo "<hr>";
 
-echo "<strong>E X E M P L O 03: Carregando os usuários de um determinado 'idusuario' = 17:</strong> <hr>";
+echo "<strong>E X E M P L O 03: Carregando os usuários de um determinado 'idusuario' = 2:</strong> <hr>";
 
 $user = new Usuario();
 
-$user->loadById(17);
+$user->loadById(2);
+
+//var_dump($user);
 
 echo     
     "<strong>Id usuário: </strong>"        . $user->getIdusuario()."<br>".
     "<strong>Login: </strong>"             . $user->getDeslogin()."<br>".
     "<strong>Senha: </strong>"             . $user->getDessenha()."<br>",
-    "<strong>Data cadastro: </strong>"     . $user->getDtcadastro()->format("d/m/Y").
+    "<strong>Data cadastro: </strong>"     . $user->getDtcadastro()->format('d/m/Y').
     "<hr>";
 
 echo "<strong>E X E M P L O 04: </strong> Método getList() - retorna sql com toda os dados da tb_usuarios<hr>";
 
 $userList = Usuario::getList();
+
+//var_dump($userList);
 
 foreach ($usuarios as $key) {
     echo 
@@ -146,7 +152,9 @@ foreach ($usuarios as $key) {
 
 echo "<strong>E X E M P L O 05: </strong> Método search() - carrega uma lista buscando por parte do login! <hr>";
 
-$search = Usuario::search("i");
+$search = Usuario::search("i"); // MÉTODO ESTATICO NÃO PRECISA SER INSTANCIADO.
+
+//var_dump($search);
 
 foreach ($search as $key) {
     echo 
@@ -160,13 +168,35 @@ foreach ($search as $key) {
 echo "<strong>E X E M P L O 06: </strong> Método login() - verificar usuário e senha! <hr>";
 $login = new Usuario();
 
-$login->login("teste","teste");
+$login->login("felipy","365451");
 
-echo "Usuário <strong>".$login->getDeslogin()." </strong>logado!";
+//var_dump($login);
 
+echo "Usuário <strong>".$login->getDeslogin()." </strong>logado!<br><hr>"; 
 
+echo "<strong>E X E M P L O 07: </strong> Método insert - inserindo um novo usuário na tb_usuarios! <hr>"; 
 
+/* $inserir = new Usuario("Priscilla", "123456789");
 
+$inserir->insert();
+
+echo 
+    
+    "<strong>Id usuário: </strong>"        . $inserir->getIdusuario()."<br>".
+    "<strong>Login: </strong>"             . $inserir->getDeslogin()."<br>".
+    "<strong>Senha: </strong>"             . $inserir->getDessenha()."<br>".
+    "<strong>Data do cadastro: </strong>"  . $inserir->getDtcadastro()->format('d/m/Y')."<br><hr>";
+
+*/
+echo "<strong>E X E M P L O 08: </strong> Método update ! <hr>"; 
+
+$update = new Usuario();
+
+$update->loadById(145); // carregando o usuário 145
+
+$update->update("teste", "&@*#&@");
+
+echo $update;
 
 
 ?>
