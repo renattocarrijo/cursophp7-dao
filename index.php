@@ -196,7 +196,17 @@ $update->loadById(145); // carregando o usuário 145
 
 $update->update("teste", "&@*#&@");
 
-echo $update;
+echo $update."<hr>";
+
+echo "<strong>E X E M P L O 09: </strong> Método delete ! <hr>"; 
+
+$delete = new Usuario();
+
+$delete->loadById(149); // carregando o usuário 145
+
+$delete->delete();
+
+echo $delete . "<hr>";
 
 
 ?>
